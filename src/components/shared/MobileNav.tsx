@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import {
   Sheet,
@@ -7,9 +8,10 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button"
 import Link from "next/link";
 import Image from "next/image";
-import { SignedIn, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { navLinks } from "@/constants";
 import { usePathname } from "next/navigation";
 
@@ -67,6 +69,12 @@ const MobileNav = () => {
             </SheetContent>
           </Sheet>
         </SignedIn>
+
+        <SignedOut>
+          <Button asChild className="button bg-purple-gradient bg-cover">
+            <Link href="/sign=in">Login</Link>
+          </Button>
+        </SignedOut>
       </nav>
     </header>
   );
